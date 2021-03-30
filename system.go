@@ -11,7 +11,7 @@ import (
 var hub = service{}
 
 type Notify interface {
-	Close()
+	Close() error
 }
 
 type service []Notify
