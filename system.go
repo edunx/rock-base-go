@@ -38,10 +38,10 @@ func reg(L *lua.LState , args *lua.Args) lua.LValue {
 	for i := 1 ; i<=n ; i++ {
 		ud := args.CheckLightUserData( L , i )
 		v ,ok := ud.Value.(Notify)
-		if ok {
-			hub.add(v)
+		if !ok {
+			L.RaiseError("invalid type , #%d must be notify , got %s" , i , ud.Type().String())
 		}
-		L.RaiseError("invalid type , #%d must be notify , got %s" , i , ud.Type().String())
+		hub.add(v)
 	}
 	return nil
 }
