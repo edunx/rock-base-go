@@ -24,8 +24,9 @@ func injectSlice(L *lua.LState) *lua.UserKV {
 
 func LuaInjectApi(L *lua.LState , parent *lua.LTable) {
 
-	L.SetField(parent , "system" ,  injectSystem(L)   )
-	L.SetField(parent , "base" ,    injectBase( L )     )
-	L.SetField(parent , "slice",    injectSlice( L )    )
+	L.SetField(parent , "system" ,  injectSystem(L)      )
+	L.SetField(parent , "base" ,    injectBase( L )      )
+	L.SetField(parent , "slice",    injectSlice( L )     )
 	L.SetField(parent , "request" , injectHttpRequest(L) )
+	L.SetField(parent , "stdout" ,  injectStdout(L)      )
 }
