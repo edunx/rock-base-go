@@ -34,6 +34,7 @@ func (self *stdout) Write(v interface{} ) error {
 	}
 
 DONE:
+	os.Stdout.WriteString("\n")
 	return nil
 }
 
