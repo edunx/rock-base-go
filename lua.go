@@ -22,11 +22,11 @@ func injectSlice(L *lua.LState) *lua.UserKV {
 
 
 
-func LuaInjectApi(L *lua.LState , parent *lua.LTable) {
+func LuaInjectApi(L *lua.LState , parent *lua.UserKV) {
 
-	L.SetField(parent , "system" ,  injectSystem(L)      )
-	L.SetField(parent , "base" ,    injectBase( L )      )
-	L.SetField(parent , "slice",    injectSlice( L )     )
-	L.SetField(parent , "request" , injectHttpRequest(L) )
-	L.SetField(parent , "stdout" ,  injectStdout(L)      )
+	parent.Set("system" ,  injectSystem(L)      )
+	parent.Set("base" ,    injectBase( L )      )
+	parent.Set("slice",    injectSlice( L )     )
+	parent.Set("request" , injectHttpRequest(L) )
+	parent.Set("stdout" ,  injectStdout(L)      )
 }
