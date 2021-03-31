@@ -10,6 +10,10 @@ type stdout struct {
 	count int
 }
 
+func (self *stdout) Name() string {
+	return "rock.stdout"
+}
+
 func (self *stdout) Write(v interface{} ) error {
 	var str string
 	var bytes []byte
